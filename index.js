@@ -1,7 +1,7 @@
 var timers = []
 var goals = [
-  {goal: 100, url: "https://khanacademy.org", progress: 55},
-  {goal: 75, url: "https://google.com", progress: 25},
+  {goal: 100, url: "https://khanacademy.org", progress: 0},
+  {goal: 75, url: "https://google.com", progress: 0},
 ]
 
 if(localStorage.goals) {
