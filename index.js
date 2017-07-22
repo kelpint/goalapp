@@ -32,7 +32,7 @@ localStorage.goals = JSON.stringify(goals);
 var goalsHtml = "";
 for (var i = 0; i < goals.length; i++) {
   var goal = goals[i]
-  goalsHtml = goalsHtml + '<li><a href="' + goal.url + '">'+goal.url + '</a><span><span>' + goal.progress + '</span>/<span>' + goal.goal + '</span></span><button onclick="deletegoal('+i+')">x</button><button onclick="addprogress('+i+')">start/stop timer</button><button onclick="resetprogress('+i+')">reset progress</button></li>'
+  goalsHtml = goalsHtml + '<li><a href="' + goal.url + '">'+goal.url + '</a>    <span><span>' + goal.progress + '</span>   /   <span>' + goal.goal + '</span></span><button onclick="deletegoal('+i+')">x</button><button onclick="addprogress('+i+')">start/stop timer</button><button onclick="resetprogress('+i+')">reset progress</button></li>'
 }
 
 document.getElementById('goalscontainer').innerHTML = goalsHtml
