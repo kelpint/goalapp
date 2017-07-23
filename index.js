@@ -29,6 +29,13 @@ function addprogress(index) {
 			goal2.progress = goal2.progress + 1;
 			goal2.minutesontimer = goal2.minutesontimer + 1;
 			updategoals();
+			if (goal2.progress === goal2.goal) {
+				alert("congrats!! you finished your goal!!");
+				document.body.style.backgroundColor = "gold";
+				setTimeout(function() {
+					document.body.style.backgroundColor = "rgb(0, 255, 255)";
+				}, 20000);
+			}
 		}, 1000);
 	}
 }
