@@ -1,10 +1,6 @@
 /* index.css */
 
 body {
-	background-color: rgb(0, 255, 255);
-}
-
-body {
 	font-style: oblique;
 }
 
@@ -18,4 +14,20 @@ button {
 
 button {
 	font-family: cursive;
+}
+
+body {
+	background-color: rgb(0, 255, 255);
+}
+
+body {
+	color: darkgreen;
+}
+
+button {
+	color: darkblue;
+}
+
+button {
+	background-color: yellow;
 }
