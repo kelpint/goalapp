@@ -1,11 +1,18 @@
 var timers = [];
-var goals = [
-	{ goal: 100, url: "https://khanacademy.org", progress: 0 },
-	{ goal: 75, url: "https://google.com", progress: 0 },
-];
+var goals = [];
 
 if (localStorage.goals) {
 	goals = JSON.parse(localStorage.goals);
+}
+function formattime(time) {
+	var min = Math.floor(time / 60);
+	var sec = time % 60;
+	min = String(min);
+	sec = String(sec);
+	if (sec.length < 2) {
+		sec = "0" + sec;
+	}
+	return min + ":" + sec;
 }
 function resetprogress(index) {
 	var goal2 = goals[index];
@@ -14,13 +21,15 @@ function resetprogress(index) {
 }
 function addprogress(index) {
 	var goal2 = goals[index];
+	goal2.minutesontimer = 0;
 	if (timers[index]) {
 		clearInterval(timers[index]);
 	} else {
 		timers[index] = setInterval(function() {
 			goal2.progress = goal2.progress + 1;
+			goal2.minutesontimer = goal2.minutesontimer + 1;
 			updategoals();
-		}, 60000);
+		}, 1000);
 	}
 }
 function deletegoal(index) {
@@ -41,13 +50,15 @@ function updategoals() {
 			goal.url +
 			"</a>    " +
 			"<span><span>" +
-			goal.progress +
+			Math.floor(goal.progress / 60) +
 			"</span>   /   " +
 			"<span>" +
-			goal.goal +
+			goal.goal / 60 +
 			'</span></span><button onclick="deletegoal(' +
 			i +
-			')">x</button><button onclick="addprogress(' +
+			')">x</button>' +
+			formattime(goal.minutesontimer) +
+			'<button onclick="addprogress(' +
 			i +
 			')">start/stop timer</button><button onclick="resetprogress(' +
 			i +
@@ -59,8 +70,10 @@ function updategoals() {
 
 updategoals();
 
-document.getElementById("addgoal").onclick = function() {
-	var goalminutes = Number(document.getElementById("newgoal").value);
+document.getElementById("addgoal").onclick = addgoal;
+
+function addgoal() {
+	var goalminutes = Number(document.getElementById("newgoal").value) * 60;
 	var goalurl = document.getElementById("newgoalurl").value;
 	if (goalminutes < 0) {
 		alert("error");
@@ -70,6 +83,7 @@ document.getElementById("addgoal").onclick = function() {
 		goal: goalminutes,
 		url: goalurl,
 		progress: 0,
+		minutesontimer: 0,
 	});
 	updategoals();
-};
+}
