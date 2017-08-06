@@ -63,13 +63,13 @@ function updategoals() {
 			goal.goal / 60 +
 			'</span></span><button onclick="deletegoal(' +
 			i +
-			')">x</button>' +
+			')">X</button>' +
 			formattime(goal.minutesontimer) +
 			'<button onclick="addprogress(' +
 			i +
-			')">start/stop timer</button><button onclick="resetprogress(' +
+			')">Start/Stop Timer</button><button onclick="resetprogress(' +
 			i +
-			')">reset progress</button></li>';
+			')">Reset Progress</button></li>';
 	}
 
 	document.getElementById("goalscontainer").innerHTML = goalsHtml;
