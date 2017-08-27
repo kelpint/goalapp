@@ -19,6 +19,11 @@ function resetprogress(index) {
 	goal2.progress = 0;
 	updategoals();
 }
+function add5min(index) {
+	var goal2 = goals[index];
+	goal2.goal += 300;
+	updategoals();
+}
 function addprogress(index) {
 	var goal2 = goals[index];
 	goal2.minutesontimer = 0;
@@ -67,7 +72,9 @@ function updategoals() {
 			formattime(goal.minutesontimer) +
 			'<button onclick="addprogress(' +
 			i +
-			')">Start/Stop Timer</button><button onclick="resetprogress(' +
+			')">Start/Stop Timer</button><button onclick="add5min(' +
+			i +
+			')">add 5 minutes to goal</button><button onclick="resetprogress(' +
 			i +
 			')">Reset Progress</button></li>';
 	}
